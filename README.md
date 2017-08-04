@@ -3,7 +3,8 @@ VERY basic translator. Takes label_id, returns String
 
 Takes a simple booklet in the form 
 
-`var booklet = {
+<pre> 
+var booklet = {
     "de": {
         "label1":"Text für Label1",
         "label2":"Text for {$someVariable}"
@@ -11,7 +12,8 @@ Takes a simple booklet in the form
     "en": {
         "label1":"Text for label1",
         "label2":"Text for {$someVariable}"
-}`
+} 
+</pre>
 
 and returns the correct string based on the given label.
 

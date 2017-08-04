@@ -6,20 +6,27 @@
     "url": "git://github.com/low-res/translator.git"
   },
   "license": "MIT",
-  "format":"amd",
-
+  "format": "amd",
   "jspm": {
     "main": "translator",
     "directories": {
       "lib": "src",
       "test": "tests"
+    },
+    "devDependencies": {
+      "jasmine-core": "npm:jasmine-core@^2.7.0",
+      "jspm": "npm:jspm@^0.16.53",
+      "karma": "npm:karma@^1.7.0",
+      "karma-jasmine": "npm:karma-jasmine@^1.1.0",
+      "karma-systemjs": "npm:karma-systemjs@^0.16.0"
     }
   },
   "devDependencies": {
-    "jasmine-core":"2.5.2",
-    "karma": "1.5.0",
-    "karma-chrome-launcher": "2.0.0",
-    "karma-jasmine": "1.1.0",
-    "karma-systemjs":"0.16.0"
+    "jasmine-core": "^2.7.0",
+    "jspm": "^0.16.53",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-systemjs": "^0.16.0"
   }
 }
