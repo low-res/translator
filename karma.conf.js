@@ -20,8 +20,9 @@ module.exports = function(config) {
 
             // Patterns for files that you want Karma to make available, but not loaded until a module requests them. eg. Third-party libraries.
             serveFiles: [
-                '**/*.js',
-                '**/*.html',
+                './jspm_packages/**/*.js',
+                './src/**/*.js',
+                './src/**/*.html',
             ],
 
             // SystemJS configuration specifically for tests, added after your config file.
