@@ -7,7 +7,9 @@ Takes a simple booklet in the form
 var booklet = {
     "de": {
         "label1":"Text für Label1",
-        "label2":"Text for {$someVariable}"
+        "label2":"Text for {$someVariable}",
+        "vprintf":  "This is a text with %s of %s coming from an array",
+        "sprintf":  "This is a text with %(type)s of %(source)s coming from an object"
     },
     "en": {
         "label1":"Text for label1",
@@ -35,3 +37,10 @@ console.log( translator.translate('label2') );
 `
 
 will output `Text for Variable Value`
+
+sprintf style string formating is also supported:
+```
+translator.translate('vprintf', ['text1','text2]);
+translator.translate('sprintf', {type:'text1', source:'text2'});
+```
+

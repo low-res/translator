@@ -16,6 +16,7 @@ System.config({
     "karma-chrome-launcher": "npm:karma-chrome-launcher@2.2.0",
     "karma-jasmine": "npm:karma-jasmine@1.1.0",
     "karma-systemjs": "npm:karma-systemjs@0.16.0",
+    "sprintf-js": "npm:sprintf-js@1.1.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
@@ -1879,6 +1880,9 @@ System.config({
     },
     "npm:source-map@0.5.6": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:sprintf-js@1.1.1": {
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:sshpk@1.13.1": {
       "asn1": "npm:asn1@0.2.3",

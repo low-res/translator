@@ -9,8 +9,10 @@ define([
         translator =  new Translator();
         translator.setBooklet( {
             "de": {
-                "label1":"Text für Label1",
-                "label2":"Text for {$someVariable}"
+                "label1":   "Text für Label1",
+                "label2":   "Text for {$someVariable}",
+                "vprintf":  "This is a text with %s of %s coming from an array",
+                "sprintf":  "This is a text with %(type)s of %(source)s coming from an object"
             },
             "en": {
                 "label1":"Text for label1",
@@ -56,6 +58,16 @@ define([
         it('should insert the variable values on translate', function(){
             translator.setVariable("someVariable","Variable Value");
             expect(translator.translate("label2")).toEqual("Text for Variable Value");
+        });
+
+        it('should be possible to make sprintf-like stringformating with an array of values', function () {
+            var result = translator.translate('vprintf', ['an array','values']);
+            expect(result).toEqual("This is a text with an array of values coming from an array");
+        })
+
+        it('should be possible to have stringformating with a given object', function () {
+            var result = translator.translate('sprintf', {type:'variables', source:'an object'});
+            expect(result).toEqual("This is a text with variables of an object coming from an object");
         });
 
     });

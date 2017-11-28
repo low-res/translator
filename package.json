@@ -13,6 +13,9 @@
       "lib": "src",
       "test": "tests"
     },
+    "dependencies": {
+      "sprintf-js": "npm:sprintf-js@^1.1.1"
+    },
     "devDependencies": {
       "jasmine-core": "npm:jasmine-core@^2.7.0",
       "jspm": "npm:jspm@^0.16.53",

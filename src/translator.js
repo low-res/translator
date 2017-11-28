@@ -4,7 +4,9 @@
  * for easy translations.
  */
 
-define([], function(  ) {
+define([
+    'sprintf-js'
+], function( sprintfjs ) {
 
     var p = Translator.prototype;
 
@@ -97,7 +99,7 @@ define([], function(  ) {
      * @param labelId
      * @returns {*}
      */
-    p.translate = function( labelId ) {
+    p.translate = function( labelId, values ) {
         var result  = labelId;
         var bo      = this.locale != "" ? this.textbooklet[this.locale] : this.textbooklet;
         if(!bo) {
@@ -108,6 +110,16 @@ define([], function(  ) {
         if( bo[labelId] ){
             result = bo[labelId];
             result = this._replaceVariables(result);
+
+            if(Array.isArray(values)) {
+                result = sprintfjs.vsprintf(result, values);
+            }
+
+            if(typeof values === 'object') {
+                result = sprintfjs.sprintf(result, values);
+            }
+
+
         } else {
             // console.warn( "No text found for "+labelId );
         }
