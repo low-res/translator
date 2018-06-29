@@ -73,6 +73,28 @@ define([
     }
 
 
+    /**
+     * create an JS-object that contains all labels of the soucreLanguage.
+     * If the targetLanguage already exists, only the missing labels are added.
+     * The resulting object can be pasted into the textbooklet.
+     * @param sourceLanguage
+     * @param targetLanguage
+     */
+    p.exportTranslation = function ( sourceLanguage, targetLanguage) {
+        var sourceBooklet = this.textbooklet[sourceLanguage];
+        var targetBooklet = this.textbooklet[targetLanguage];
+        var resultingBooklet = {};
+
+        for (var label in sourceBooklet) {
+            if( targetBooklet && targetBooklet[label] ) resultingBooklet[label] = targetBooklet[label];
+            else {
+                resultingBooklet[label] = "translate to "+targetLanguage+": "+sourceBooklet[label];
+            }
+        }
+        return resultingBooklet;
+    }
+
+
     p._replaceVariables = function( inputTxt ) {
         var result = inputTxt;
         var variableKey = "";
@@ -125,6 +147,7 @@ define([
         }
         return result;
     }
+
 
     return Translator;
 

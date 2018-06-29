@@ -3,11 +3,10 @@ define([
     "/base/src/translator.js"
 ], function(Translator) {
 
-    var translator;
+    var translator, booklet;
 
     beforeEach(function() {
-        translator =  new Translator();
-        translator.setBooklet( {
+        booklet = {
             "de": {
                 "label1":   "Text für Label1",
                 "label2":   "Text for {$someVariable}",
@@ -18,7 +17,9 @@ define([
                 "label1":"Text for label1",
                 "label2":"Text for {$someVariable}"
             }
-        } );
+        };
+        translator =  new Translator();
+        translator.setBooklet( booklet );
         translator.setLocale("de");
     });
 
@@ -70,6 +71,21 @@ define([
             expect(result).toEqual("This is a text with variables of an object coming from an object");
         });
 
-    });
+        describe('should create/update a translation for a given language', function () {
 
+            it('should create an object with all translated labels', function () {
+                var translation = translator.exportTranslation("de", "en");
+                expect(translation.label1).toBeDefined();
+                expect(translation.label2).toBeDefined();
+                expect(translation.vprintf).toBeDefined();
+                expect(translation.sprintf).toBeDefined();
+
+                expect(translation.label1).toEqual( booklet.en.label1 );
+                expect(translation.vprintf).toEqual( "translate to en: "+booklet.de.vprintf );
+
+                console.log( translation );
+            });
+
+        });
+    });
 });
