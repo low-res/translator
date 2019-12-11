@@ -19,7 +19,7 @@ define([
         this.textbooklet = textbooklet;
         this.locale = "";
         this.variables = {};
-        this.variableRegex = /(\{\$[a-zA-Z0-9]+\})/g;
+        this.variableRegex = /(\{\$[a-zA-Z0-9_-]+\})/g;
     }
 
 
