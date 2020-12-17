@@ -87,6 +87,35 @@ define([
         this.textbooklet[locale][labelId] = value;
     }
 
+
+    /**
+     * add/override labels with giving an object in the form of the textbooklet
+     * {
+     *     "locale1": {
+     *         "labelid1":"value1",
+     *         "labelid2":"value2",
+     *     },
+     *     "locale2": { ... }
+     * }
+     * @param obj
+     */
+    p.mergeLabels = function( obj ) {
+        var self = this;
+        for (var locale in obj) {
+            // check also if property is not inherited from prototype
+            if (obj.hasOwnProperty(locale)) {
+                var labels = obj[locale];
+                for (var labelid in labels) {
+                    if (labels.hasOwnProperty(labelid)) {
+                        var value = labels[labelid];
+                        self.setLabel(labelid, value, locale);
+                    }
+                }
+            }
+        }
+    }
+
+
     /**
      * create an JS-object that contains all labels of the soucreLanguage.
      * If the targetLanguage already exists, only the missing labels are added.
