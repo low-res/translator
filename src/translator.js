@@ -74,6 +74,20 @@ define([
 
 
     /**
+     * set a new label in the textbooklet (or override an existing one)
+     * this lets you dynamically set or cahnge labels
+     * @param labelId
+     * @param value
+     * @param locale
+     */
+    p.setLabel = function( labelId, value, locale ) {
+        if( !this.textbooklet ) this.textbooklet = {};
+        if( !this.textbooklet[locale] ) this.textbooklet[locale] = {};
+
+        this.textbooklet[locale][labelId] = value;
+    }
+
+    /**
      * create an JS-object that contains all labels of the soucreLanguage.
      * If the targetLanguage already exists, only the missing labels are added.
      * The resulting object can be pasted into the textbooklet.
